@@ -1,7 +1,5 @@
 package tests;
 
-import java.io.IOException;
-
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -9,13 +7,10 @@ import org.testng.annotations.Test;
 import base.BaseTest;
 import pages.LoginPage;
 import utils.Log;
+import utils.ExtentReportManager;     // ← Add this import
 
 public class LoginTest extends BaseTest {
 
-    /**
-     * Invalid credentials data provider.
-     * Uses your existing hard‑coded list.
-     */
     @DataProvider(name = "LoginData2")
     public Object[][] getInvalidData() {
         return new Object[][] {
@@ -25,9 +20,6 @@ public class LoginTest extends BaseTest {
         };
     }
 
-    /**
-     * 1️⃣ Valid login test (admin@yourstore.com / admin)
-     */
     @Test(priority = 1)
     public void testValidLogin() {
         Log.info("Starting VALID login test...");
@@ -49,9 +41,6 @@ public class LoginTest extends BaseTest {
         test.pass("Valid login succeeded and dashboard loaded");
     }
 
-    /**
-     * 2️⃣ Invalid login test (data‑driven). Expects to stay on the login page.
-     */
     @Test(dataProvider = "LoginData2", priority = 2)
     public void testInvalidLogin(String username, String password) {
         Log.info("Starting INVALID login test with [" + username + "/" + password + "]...");
