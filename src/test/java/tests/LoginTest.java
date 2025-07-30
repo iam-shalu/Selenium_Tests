@@ -51,9 +51,11 @@ public class LoginTest extends BaseTest {
         test.info("Verifying page title");
 
         // ← Updated expected title
-        Assert.assertEquals(actualTitle,
+        Assert.assertEquals(
+            actualTitle,
             "Dashboard / nopCommerce administration",
-            "Page title did not match after login");
+            "Page title did not match after login"
+        );
 
         test.pass("Login Successful");
     }
